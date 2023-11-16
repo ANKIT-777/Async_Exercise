@@ -29,20 +29,23 @@ function delayFetcher(url, count) {
     });
   }
   
-  async function fetchData(){
-
+  async function fetchData() {
+    const userData = [];
+  
     for (let i = 1; i <= 15; i++) {
       const url = `http://localhost:3000/todos?user_id=${i}`;
       try {
         const todo = await delayFetcher(url, i);
         console.log(todo);
+        userData.push(todo); 
       } catch (error) {
         console.error(error);
       }
     }
-    return todo
-  };
-
+  
+    return userData; 
+  }
+  
 
   
 module.exports  =  fetchData;
